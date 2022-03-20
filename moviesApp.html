@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies App</title>
+</head>
+<body>
+    <h2>Movies App</h2>
+    <div>   
+    <form action="">
+        <input type="text" id="movie" placeholder="Movie Title">
+        <input type="text" id="rating" placeholder="Rating">
+        
+        
+</form>
+<button id="submit-form">Submit</button>
+
+
+</div>
+<ul>
+
+
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+
+$(function() {
+
+$('#submit-form').on('click', function(){
+ console.log('submitted');
+ let movieVal = $('#movie').val();
+ let rating = $('#rating').val();
+ $('<li></li>').text(movieVal + ' ' + rating).appendTo('ul')
+ $('<button>Remove</button>').addClass('remove').appendTo('ul');
+ $('form').trigger('reset');
+ });
+
+ $('button').on('click', '.remove', function(){
+    $('.remove').remove('li')
+ })
+})
+
+
+
+</script>
+    
+</body>
+</html>
