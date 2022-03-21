@@ -9,13 +9,13 @@
 <body>
     <h2>Movies App</h2>
     <div>   
-    <form action="">
+    <form action="" id="new-movie-form">
         <input type="text" id="movie" placeholder="Movie Title">
-        <input type="text" id="rating" placeholder="Rating">
-        
+        <input type="number" min="0" max="10" id="rating" placeholder="Rating">
+        <button  id="submit-form">Submit</button>
         
 </form>
-<button id="submit-form">Submit</button>
+
 
 
 </div>
@@ -26,11 +26,11 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
+$('document').ready(function(){  
 
-$(function() {
-
-$('#submit-form').on('click', function(){
- console.log('submitted');
+$('#new-movie-form').on('submit', function(evt){
+ evt.preventDefault();
+ 
  let movieVal = $('#movie').val();
  let rating = $('#rating').val();
  $('<li></li>').text(movieVal + ' ' + rating).appendTo('ul')
@@ -38,11 +38,19 @@ $('#submit-form').on('click', function(){
  $('form').trigger('reset');
  });
 
- $('button').on('click', '.remove', function(){
-    $('.remove').remove('li')
+ $('ul').on('click', '.remove', function(evt){
+     
+    evt.target.previousSibling.remove()
+    evt.target.remove()
+     
+
+
  })
+
+ 
 })
 
+  
 
 
 </script>
